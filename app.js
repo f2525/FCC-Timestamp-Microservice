@@ -8,8 +8,9 @@ app.get("/", (req, res)=>{
 
 app.use("/static", express.static("public"))
 
-app.listen(port, ()=>{
-    console.log("app is listening on port 3000")
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
 });
 
 app.get("/api/timestamp/:word", (req,res)=>{
