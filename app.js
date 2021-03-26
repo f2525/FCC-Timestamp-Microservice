@@ -11,6 +11,10 @@ app.get("/", (req, res)=>{
     res.sendFile(__dirname + "/index.html");
 })
 
+app.get("/tes/:date", (req,res)=>{
+    res.send(new Date(req.params.date));
+})
+
 app.use("/static", express.static("public"))
 
 //kalau heroku dia pake environment variable untuk PORTnya, jadi harus begini app.listennya
@@ -55,5 +59,18 @@ app.get("/api/timestamp/:word", (req,res)=>{
             "utc": dateUTC,
         })
     }
-    res.json({"error": "Invalid Date"});
+
+    let date = new Date(req.params.word);
+    let utcDate = date.toUTCString();
+    let unixDate = date.getTime();
+    res.json({
+        unix: unixDate,
+        utc: utcDate 
+    });
+    
+    console.log("testing")
+    if (new Date(req.params.word)===null){
+        res.json({"error": "Invalid Date"});
+    }
+
 })
