@@ -8,6 +8,7 @@ app.get("/", (req, res)=>{
 
 app.use("/static", express.static("public"))
 
+//kalau heroku dia pake environment variable untuk PORTnya, jadi harus begini app.listennya
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Our app is running on port ${ PORT }`);
