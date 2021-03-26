@@ -29,8 +29,8 @@ app.get("/api/timestamp/:word", (req,res)=>{
     }
     else if (dateTest.test(req.params.word)){
         let dateSplit = req.params.word.split("-");
-        //jamnya 7, karena beda 7 jam sama East Time, Date() kita WIB
-        let date = new Date(parseInt(dateSplit[0]), parseInt(dateSplit[1])-1, parseInt(dateSplit[2]), 7, 0, 0);
+        //jamnya 7, karena beda 7 jam sama East Time, Date() kita WIB. ini hanya berlaku untuk localhost, kalau untuk heroku 0 aja karena servernya di US
+        let date = new Date(parseInt(dateSplit[0]), parseInt(dateSplit[1])-1, parseInt(dateSplit[2]), 0, 0, 0);
         let x = dateSplit[0];
         let dateUTC = date.toUTCString();
         let dateUNIX = date.getTime()/1000;
