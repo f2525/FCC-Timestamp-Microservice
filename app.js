@@ -22,7 +22,7 @@ app.listen(PORT, () => {
 app.get("/api/timestamp", (req,res)=>{
     let date = new Date();
     let utcDate = date.toUTCString();
-    let unixDate = date.getTime()/1000;
+    let unixDate = date.getTime();
     res.json({
         "unix": unixDate,
         "utc": utcDate
@@ -48,10 +48,10 @@ app.get("/api/timestamp/:word", (req,res)=>{
         let date = new Date(parseInt(dateSplit[0]), parseInt(dateSplit[1])-1, parseInt(dateSplit[2]), 0, 0, 0);
         let x = dateSplit[0];
         let dateUTC = date.toUTCString();
-        let dateUNIX = date.getTime()/1000;
+        let dateUNIX = date.getTime();
 
         res.json({
-            "unix": dateUNIX*1000,
+            "unix": dateUNIX,
             "utc": dateUTC,
         })
     }
