@@ -22,7 +22,7 @@ app.get("/api/timestamp/:word", (req,res)=>{
         let milisecond = parseInt(req.params.word);
         let date = new Date(milisecond);
 
-        res.send({
+        res.json({
             unix: parseInt(req.params.word),
             "utc": date.toUTCString()
         });
