@@ -19,6 +19,16 @@ app.listen(PORT, () => {
     console.log(`Our app is running on port ${ PORT }`);
 });
 
+app.get("/api/timestamp", (req,res)=>{
+    let date = new Date();
+    let utcDate = date.toUTCString();
+    let unixDate = date.getTime()/1000;
+    res.json({
+        "unix": unixDate,
+        "utc": utcDate
+    })
+})
+
 app.get("/api/timestamp/:word", (req,res)=>{
     let unixTest = /[^0-9]/g;
     let dateTest = /^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/;
