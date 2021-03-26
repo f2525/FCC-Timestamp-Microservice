@@ -38,8 +38,7 @@ app.get("/api/timestamp/:word", (req,res)=>{
     let dateTest = /^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/;
     let x = new Date(req.params.word);
 
-    //awalnya pake ini, ternyata sia2
-    /*
+ 
     if (!req.params.word.match(unixTest)){
         let milisecond = parseInt(req.params.word);
         let date = new Date(milisecond);
@@ -62,7 +61,7 @@ app.get("/api/timestamp/:word", (req,res)=>{
             "utc": dateUTC,
         })
     }
-    */
+
 
     //entah kenapa ga bisa if (x==null){}, harus begini:
     if (!x.getTime()){
